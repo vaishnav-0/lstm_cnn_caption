@@ -1,4 +1,6 @@
 from pickle import load
+from PIL import Image
+from matplotlib import pyplot as plt
 from numpy import argmax
 from keras.preprocessing.sequence import pad_sequences
 from keras.applications.vgg16 import VGG16
@@ -64,7 +66,16 @@ max_length = 34
 # load the model
 model = load_model('model_19.h5')
 # load and prepare the photograph
-photo = extract_features('Flicker8k_Dataset/58363928_6f7074608c.jpg')
+img_src = 'Flicker8k_Dataset/58363928_6f7074608c.jpg'
+photo = extract_features(img_src)
+image = Image.open(img_src)
+plt.imshow(image)
+
+
 # generate description
 description = generate_desc(model, tokenizer, photo, max_length)
 print(description)
+
+plt.title(description)
+plt.axis('off')
+plt.show()
