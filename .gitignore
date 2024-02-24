@@ -1,0 +1,10 @@
+Flickr*/**
+Flicker*/**
+__MACOSX
+*.h5
+features.pkl
+descriptions.txt
+venv
+
+.idea
+
